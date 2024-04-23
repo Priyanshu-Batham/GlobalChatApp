@@ -21,12 +21,12 @@ let onlineUserCount = 0;
 
 io.on('connection', (socket) => {
     let username = ""
+    onlineUserCount += 1
 
     console.log(`${socket.id} connected`)
     socket.on('newUser', (user) => {
         console.log(`${user} connected`);
         username = user;
-        ++onlineUserCount;
         io.emit('updateChat', `${username} connected`)
         io.emit('updateOnlineUserCount', `${onlineUserCount} users online`)
     })
@@ -34,7 +34,7 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         console.log(`${username} disconnected`);
         io.emit('updateChat', `${username} disconnected`);
-        --onlineUserCount;
+        onlineUserCount -= 1
         io.emit('updateOnlineUserCount', `${onlineUserCount} users online`)
     })
 

@@ -97,6 +97,7 @@
         const li = document.createElement('li');
         li.innerText = msg;
         document.querySelector('#messages').appendChild(li);
+        window.scrollBy(0, 500)
     })
 
     //receiving onlineUserCount
@@ -105,6 +106,7 @@
         li.innerText = msg;
         li.style.backgroundColor = 'green';
         document.querySelector('#messages').appendChild(li);
+        window.scrollBy(0, 500)
     })
 </script>
 
